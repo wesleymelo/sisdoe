@@ -7,7 +7,8 @@ appSisDoeComunicaSUS.controller("ComunicaSusCtrl", [
 	"$cookies",
 	"$timeout",
 	"AlertService",
-	"ComunicaSusService", function ($http, $scope, $filter, $cookies, $timeout, AlertService, ComunicaSusService) {
+	"ComunicaSusService",
+	"AcessoService", function ($http, $scope, $filter, $cookies, $timeout, AlertService, ComunicaSusService, AcessoService) {
 		
 	var ctrl = this;
 	
@@ -102,7 +103,22 @@ appSisDoeComunicaSUS.controller("ComunicaSusCtrl", [
     ctrl.init = function(){
     	ctrl.listAll();
     };
+    
+    /**
+     * Method for class initialization
+     * @return {[type]} [description]
+     */
+    ctrl.initAccess = function(){
+    	
+	   AcessoService.obtainUser().then(function(response){
+			$scope.user = response.data;
+			console.log("Response Data User: ", response.data);
+			ctrl.init();
+	   }, function(error ){
+	    	console.log("Erro ao obter o usuário autenticado: ", error);
+	   });
+    };
 
-    ctrl.init();
+    ctrl.initAccess();
 
 }]);

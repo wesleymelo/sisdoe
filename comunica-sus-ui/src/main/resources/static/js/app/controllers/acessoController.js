@@ -1,37 +1,27 @@
 'use strict';
 
 appSisDoeComunicaSUS.controller("AcessoCtrl", [
-	"$rootScope",
 	"$scope",
-	"$cookies",
 	"AcessoService", 
-	"AlertService", function ($rootScope, $scope, $cookies, AcessoService, AlertService) {
+	"AlertService", function ($scope, AcessoService, AlertService) {
  
 	$scope.user = {};
 	
 	$scope.getUser = function(){
 		AcessoService.obtainUser().then(function(response){
 			$scope.user = response.data;
-			
-			if(typeof(response.data.details.tokenValue) != 'undefined'){
-				$cookies.put("TOKEN-ACCESS", response.data.details.tokenValue);				
-				console.log("TOKEN-ACCESS", response.data.details.tokenValue);
-				$rootScope.authenticated = true;
-			}else{
-				$rootScope.authenticated = false;
-			}
+			console.log("Response Data User: ", response.data);
 	    }, function(error ){
 	    	console.log("Erro ao obter o usuário autenticado: ", error);
-	    	$rootScope.authenticated = false;
 	    });
 	}
 								
 	$scope.logout = function() {
 		AcessoService.logout().then(function() {
-			$rootScope.authenticated = false;
-			$cookies.remove("TOKEN-ACCESS");
-		}, function(error) {
-			$rootScope.authenticated = false;
+			console.log("Logout realizado com sucesso!");
+			AlertService.addWarning('success', 'Logout realizado com sucesso.', 5000);
+		}).error(function(data) {
+			console.log("Logout não realizado.");
 			AlertService.addWarning('error', 'Logout não pode ser realizado.', 5000);
 		});
 	}

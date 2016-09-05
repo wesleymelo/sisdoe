@@ -8,7 +8,8 @@ appSisDoeAgendamentoOnline.controller("AgendamentoCtrl", [
 	"$timeout",
 	"AlertService",
 	"AgendamentoService",
-	"LocalDoacaoService", function ($http, $scope, $filter, $cookies, $timeout, AlertService, AgendamentoService, LocalDoacaoService) {
+	"LocalDoacaoService",
+	"AcessoService", function ($http, $scope, $filter, $cookies, $timeout, AlertService, AgendamentoService, LocalDoacaoService, AcessoService) {
 		
 	var ctrl = this;
 	
@@ -194,6 +195,21 @@ appSisDoeAgendamentoOnline.controller("AgendamentoCtrl", [
      * Method for class initialization
      * @return {[type]} [description]
      */
+    ctrl.initAccess = function(){
+    	
+	   AcessoService.obtainUser().then(function(response){
+			$scope.user = response.data;
+			console.log("Response Data User: ", response.data);
+			ctrl.init();
+	   }, function(error ){
+	    	console.log("Erro ao obter o usuário autenticado: ", error);
+	   });
+    };
+    
+    /**
+     * Method for class initialization
+     * @return {[type]} [description]
+     */
     ctrl.init = function(){
        ctrl.agendamentoFound = AgendamentoService.getByDoador({doador:"1"},
     	  function(data) {
@@ -233,6 +249,6 @@ appSisDoeAgendamentoOnline.controller("AgendamentoCtrl", [
     	console.log("consulta inicial realizada.", ctrl.locaisDoacao);
     });*/
 
-    ctrl.init();
+    ctrl.initAccess();
 
 }]);
