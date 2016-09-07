@@ -27,7 +27,7 @@ public class AgendamentoUIApplication extends WebSecurityConfigurerAdapter {
 			.logout().and()
 			.authorizeRequests()
 			.antMatchers("/css/**", "/js/**", "/fonts/**", "/font-awesome/**").permitAll()
-			.antMatchers("/agendamento.html").hasAnyAuthority("AGENDAMENTO_READ", "AGENDAMENTO_WRITE")
+			.antMatchers("/index.html").hasAnyAuthority("AGENDAMENTO_READ", "AGENDAMENTO_WRITE")
 			.anyRequest().authenticated();
 			// @formatter:on
 	}
