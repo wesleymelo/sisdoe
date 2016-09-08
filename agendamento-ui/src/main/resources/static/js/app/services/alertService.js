@@ -8,7 +8,7 @@ appSisDoeAgendamentoOnline.factory('AlertService', ['$rootScope', '$timeout', fu
     $rootScope.alertsWarning = [];
 
     alertService.addWarning = function(type, msg, timeout) {
-    	alertService.closeAllAlert();
+    	//alertService.closeAllAlert();
     	$rootScope.alertsWarning.push({'type': type, 'msg': msg});   
     	
     	$timeout(function(){
@@ -18,7 +18,7 @@ appSisDoeAgendamentoOnline.factory('AlertService', ['$rootScope', '$timeout', fu
     };
     
     alertService.addInfo = function(type, msg, timeout) {
-    	alertService.closeAllAlert();
+    	//alertService.closeAllAlert();
     	$rootScope.alertsInfo.push({'type': type, 'msg': msg});
 
     	$timeout(function(){

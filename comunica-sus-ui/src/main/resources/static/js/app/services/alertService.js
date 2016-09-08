@@ -8,7 +8,7 @@ appSisDoeComunicaSUS.factory('AlertService', ['$rootScope', '$timeout', function
     $rootScope.alertsWarning = [];
 
     alertService.addWarning = function(type, msg, timeout) {
-    	alertService.closeAllAlert();
+    	//alertService.closeAllAlert();
     	$rootScope.alertsWarning.push({'type': type, 'msg': msg});   
     	
     	$timeout(function(){
@@ -18,7 +18,7 @@ appSisDoeComunicaSUS.factory('AlertService', ['$rootScope', '$timeout', function
     };
     
     alertService.addInfo = function(type, msg, timeout) {
-    	alertService.closeAllAlert();
+    	//alertService.closeAllAlert();
     	$rootScope.alertsInfo.push({'type': type, 'msg': msg});
 
     	$timeout(function(){

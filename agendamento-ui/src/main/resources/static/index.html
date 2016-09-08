@@ -335,7 +335,7 @@ table {
 		<script src="js/app/services/agendamentoService.js?n=24" type="text/javascript"></script>
 		<script src="js/app/services/localDoacaoService.js?n=5" type="text/javascript"></script>
 		<script src="js/app/services/userService.js?n=2" type="text/javascript"></script>
-		<script src="js/app/services/alertService.js?n=5" type="text/javascript"></script>
+		<script src="js/app/services/alertService.js?n=6" type="text/javascript"></script>
 		
 		<!-- APP Controllers -->
 		<script src="js/app/controllers/acessoController.js?n=13" type="text/javascript"></script>
@@ -404,16 +404,16 @@ table {
 			function showError(error) {
 				switch (error.code) {
 				case error.PERMISSION_DENIED:
-					alert("Usuário rejeitou a solicitação de geolocalização. Informe o Cep.");
+					alert("Erro de geolocalização: Usuário rejeitou a solicitação de geolocalização. Informe o Cep.");
 					break;
 				case error.POSITION_UNAVAILABLE:
-					alert("Geolocalização indisponível. Informe o Cep.");
+					alert("Erro de geolocalização: Geolocalização indisponível. Informe o Cep.");
 					break;
 				case error.TIMEOUT:
-					alert("A requisição de geolocalização expirou. Informe o Cep.");
+					alert("Erro de geolocalização: A requisição de geolocalização expirou. Informe o Cep.");
 					break;
 				case error.UNKNOWN_ERROR:
-					alert("Ocorreu algum erro desconhecido na geolocalização. Informe o Cep.");
+					alert("Erro de geolocalização: Ocorreu algum erro desconhecido na geolocalização. Informe o Cep.");
 					break;
 				}
 			}
