@@ -1,12 +1,23 @@
 debug: true
 
+server:
+  port: 9000
+endpoints:
+  shutdown:
+    enabled: true
+  restart:
+    enabled: true
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: https://microservice-registry-sisdoe.herokuapp.com/eureka
+  metadataMap:
+    instanceId: ${spring.application.name}:${spring.application.instance_id:${server.port}}
+
 spring:
   aop:
     proxy-target-class: true
-    
-# Define the port where the API gateway server would be running
-server:
-  port: 9000
   
 auth:
  server:
@@ -49,3 +60,7 @@ zuul:
 logging:
   level:
     org.springframework.security: DEBUG
+    
+ribbon:
+  eureka:
+    enabled: true

@@ -1,6 +1,6 @@
 spring:
   application:
-    name: agendamento-microservice
+    name: agendamento-ui
   cloud:
     config:
       uri: https://config-server-sisdoe.herokuapp.com

@@ -1,16 +1,16 @@
 server:
   port: 8888
-spring:
-  application:
-      name:eureka
-  cloud:
-    config:
-      enabled: false
+
 eureka:
+  server:
+    enableSelfPreservation: false
   instance:
     hostname: microservice-registry-sisdoe.herokuapp.com
+    leaseRenewalIntervalInSeconds: 5
   client:
     registerWithEureka: false
     fetchRegistry: false
     serviceUrl:
-      defaultZone: https://${eureka.instance.hostname}
+      defaultZone: https://${eureka.instance.hostname}/eureka/
+      
+spring.cloud.config.discovery.enabled: true
