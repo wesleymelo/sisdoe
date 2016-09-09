@@ -1,0 +1,16 @@
+server:
+  port: 8888
+spring:
+  application:
+      name:eureka
+  cloud:
+    config:
+      enabled: false
+eureka:
+  instance:
+    hostname: microservice-registry-sisdoe.herokuapp.com
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: https://${eureka.instance.hostname}

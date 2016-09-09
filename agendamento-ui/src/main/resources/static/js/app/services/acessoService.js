@@ -29,13 +29,15 @@ appSisDoeAgendamentoOnline.factory('AcessoService', [
 				    		  function(response){
 				    			  console.log("Sucess obtainUser: ", response);
 				    			  $rootScope.authenticated = false;
-				    			  window.location = "https://oauth-server-sisdoe.herokuapp.com/uaa/login"
+					    		  $cookies.remove("JSESSIONID");
 				    			  $cookies.remove("TOKEN-ACCESS");
+				    			  window.location = "https://oauth-server-sisdoe.herokuapp.com/uaa/login"
 				    			  return response;
 				    		  },function(response){
-				    			  window.location = "https://oauth-server-sisdoe.herokuapp.com/uaa/login"
+				    			  $cookies.remove("JSESSIONID");
 				    			  $cookies.remove("TOKEN-ACCESS");
 				    			  console.log("Error obtainUser: ", response);
+				    			  window.location = "https://oauth-server-sisdoe.herokuapp.com/uaa/login"
 				    			  return response;
 				    		  }
 				      );

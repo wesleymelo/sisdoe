@@ -1,6 +1,32 @@
 logging:
  level:
   org.springframework.security: DEBUG
+  
+server:
+  port: 9001
+endpoints:
+  shutdown:
+    enabled: true
+  restart:
+    enabled: true
+
+spring:
+  config:
+    name: agendamento-microservice
+  application:
+    name: agendamento-microservice
+  cloud:
+    config:
+      enabled: true
+      uri: https://config-server-sisdoe.herokuapp.com
+      failFast: true
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: https://microservice-registry-sisdoe.herokuapp.com
+  instance:
+    metadataMap:
+      instanceId: ${spring.application.name}:${server.port}
 
 auth:
  server:

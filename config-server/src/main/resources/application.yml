@@ -1,0 +1,13 @@
+endpoints:
+  shutdown:
+    enabled: true
+    
+server:
+  port: 8889
+ 
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/wesleymelo/springboot-config-server

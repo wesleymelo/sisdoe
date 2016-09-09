@@ -29,13 +29,17 @@ appSisDoeComunicaSUS.factory('AcessoService', [
 				    		  function(response){
 				    			  console.log("Sucess obtainUser: ", response);
 				    			  $rootScope.authenticated = false;
-				    			  window.location = "https://oauth-server-sisdoe.herokuapp.com/uaa/login"
 				    			  $cookies.remove("TOKEN-ACCESS");
+				    			  $cookies.remove("JSESSIONID");
+				    			  $cookies.remove("JSESSIONID");
+				    			  window.location = "https://oauth-server-sisdoe.herokuapp.com/uaa/login"
 				    			  return response;
 				    		  },function(response){
-				    			  window.location = "https://oauth-server-sisdoe.herokuapp.com/uaa/login"
 				    			  $cookies.remove("TOKEN-ACCESS");
+				    			  $cookies.remove("JSESSIONID");
+				    			  $cookies.remove("JSESSIONID");
 				    			  console.log("Error obtainUser: ", response);
+				    			  window.location = "https://oauth-server-sisdoe.herokuapp.com/uaa/login"
 				    			  return response;
 				    		  }
 				      );
